@@ -62,3 +62,18 @@ func DeletarAlunos(c *gin.Context) {
 	}
 	database.DB.Delete(&aluno, id)
 }
+
+func EditarAluno(c *gin.Context) {
+	var aluno models.Aluno
+	id := c.Params.ByName("id")
+	database.DB.First(&aluno, id)
+	if err := c.ShouldBindJSON(&aluno); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+	database.DB.Model(&aluno).UpdateColumns(aluno)
+	c.JSON(http.StatusOK, aluno)
+
+}
