@@ -12,7 +12,7 @@ func HandleRequests() {
 	r.GET("/api/alunos/:id", controllers.ExibirAlunosPorId)
 
 	r.POST("/api/alunos", controllers.CriarNovoAluno)
-
+	r.DELETE("/api/alunos/:id", controllers.DeletarAlunos)
 	r.GET("/saudacao/:nome", controllers.Saudacao)
 
 	r.Run(addr)
