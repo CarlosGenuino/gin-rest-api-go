@@ -15,7 +15,7 @@ func HandleRequests() {
 	r.GET(alunosPath+"/:id", controllers.ExibirAlunosPorId)
 	r.GET(alunosPath+"/cpf/:cpf", controllers.BuscarAlunoPorCPF)
 	r.GET("/saudacao/:nome", controllers.Saudacao)
-	r.GET("/index", controllers.PaginaIndex)
+	r.NoRoute(controllers.Pagina404)
 	r.GET("/alunos", controllers.PaginaAlunos)
 
 	r.POST("/api/alunos", controllers.CriarNovoAluno)
